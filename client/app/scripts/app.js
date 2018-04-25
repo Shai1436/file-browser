@@ -32,8 +32,8 @@ angular
       })
       .when('/:path*', {
         templateUrl: 'views/main.html',
-        controller: 'PathController',
-        controllerAs: 'path',
+        controller: 'MainController',
+        controllerAs: 'main',
 
       })
       // .when('/files', {
