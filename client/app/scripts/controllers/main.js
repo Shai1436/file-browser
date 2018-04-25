@@ -9,10 +9,8 @@
  */
 angular.module('clientApp')
   .constant('baseURL','http://localhost:3000/')
-  .controller('MainController', ['$scope', 'MainFactory', 'Upload', '$mdToast',
-   function($scope, mainFactory, Upload, $mdToast) {
-
-
+  .controller('MainController', ['$scope', 'MainFactory', '$mdToast',
+   function($scope, mainFactory, $mdToast) {
     $scope.files = mainFactory.getFiles().query(
         function(response) {
             $scope.files = response;
@@ -20,8 +18,8 @@ angular.module('clientApp')
         },
         function(response) {
             $scope.message = 'Error: '+response.status + ' '  + response.statusText;
-    });
-
+        }
+    );
 
     $scope.format = function(abc){
       return abc.replace(/\s+/g, "-");
@@ -76,4 +74,14 @@ angular.module('clientApp')
       }
     };
 
-  }])
+    $scope.goBack = function(){
+      console.log("going back", $routeParams.path);
+      var lastSlashIndex = $routeParams.path.lastIndexOf('/');
+      var newPath = ''
+      if(lastSlashIndex !== -1){
+        newPath =  $routeParams.path.substr(0, lastSlashIndex);
+      }
+      $window.location.href =  '#/files/' + newPath;
+    };
+
+  }]);

@@ -11,13 +11,28 @@
 angular
   .module('clientApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngMaterial'
   ])
+
+  .config(['$locationProvider', function($locationProvider) {
+    $locationProvider.hashPrefix('');
+  }])
+
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
+  }])
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        controller: 'MainController',
+        controllerAs: 'main'
+      })
+      .when('/files', {
+        templateUrl: 'views/main.html',
+        controller: 'MainController',
         controllerAs: 'main'
       })
       .when('/about', {
