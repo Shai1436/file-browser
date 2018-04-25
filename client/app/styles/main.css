@@ -1,3 +1,96 @@
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot');
+    src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.woff') format('woff'),
+        url('../fonts/icomoon.ttf') format('truetype'),
+        url('../fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home2:before {
+  content: "\e901";
+}
+.icon-image:before {
+  content: "\e90d";
+}
+.icon-play:before {
+  font-size: 35px;
+  content: "\e912";
+}
+.icon-book:before {
+  font-size: 35px;
+  content: "\e91f";
+}
+.icon-file-text:before {
+  font-size: 35px;
+  content: "\e922";
+}
+.icon-file-empty:before {
+  font-size: 35px;
+  content: "\e924";
+}
+.icon-file-music:before {
+  font-size: 35px;
+  content: "\e928";
+}
+.icon-folder:before {
+  font-size: 35px;
+  content: "\e92f";
+}
+.icon-bin:before {
+  font-size: 20px;
+  content: "\e9ac";
+}
+.icon-cloud-download:before {
+  font-size: 20px;
+  content: "\e9c2";
+}
+.icon-cloud-upload:before {
+
+  vertical-align: middle;
+  color: cornflowerblue;
+  font-size: 30px;
+  content: "\e9c3";
+}
+.icon-arrow-left2:before {
+  font-size: 20px;
+  content: "\ea40";
+}
+.icon-file-pdf:before {
+  font-size: 35px;
+  content: "\eadf";
+}
+.icon-file-word:before {
+  font-size: 35px;
+  content: "\eae1";
+}
+.icon-file-excel:before {
+  font-size: 35px;
+  content: "\eae2";
+}
+.icon-libreoffice:before {
+  font-size: 35px;
+  content: "\eae3";
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;

@@ -8,9 +8,9 @@ angular.module('clientApp')
     this.getFiles = function(path) {
     	var files ={};
     	if(path)
-  	 		files =  $resource(baseURL + 'files?path='+path);
+  	 		files =  $resource(baseURL + '?path='+path);
     	else
-    		files =  $resource(baseURL + 'files/');
+    		files =  $resource(baseURL + '/');
       	return files;
     };
 
