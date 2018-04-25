@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var http = require('http');
 var getCurrentDir = function(){
-  return require('../config').homeDir + require('../config').currentUser;
+  return require('../config').homeDir;
 };
 
 router.get('/', function(req, res, next) {
