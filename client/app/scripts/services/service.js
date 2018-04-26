@@ -41,7 +41,7 @@ angular.module('clientApp')
 
         var ext = path.substring(path.length-4, path.length);
         if(ext === '.zip' || !IsDirectory){
-          window.open(baseURL + 'files/download?path='+path);
+          window.open(baseURL + 'download?path='+path);
         }
         else{
           $http.get(baseURL+'files/zip?path='+path).then(
@@ -53,7 +53,7 @@ angular.module('clientApp')
                   .position("bottom right")
                   .hideDelay(3000)
               );
-              window.open(baseURL + 'files/download?path='+path+'.zip');
+              window.open(baseURL + 'download?path='+path+'.zip');
             },
             function(err){
               console.log(err);
@@ -71,7 +71,7 @@ angular.module('clientApp')
     	if(path){
 
     		console.log("path" ,path);
-    		window.open(baseURL + 'files/delete?path='+path);
+    		window.open(baseURL + 'delete?path='+path);
     		//window.open(baseURL + 'files/download?path='+path);
     	}
     	else{

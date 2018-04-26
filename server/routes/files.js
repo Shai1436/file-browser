@@ -47,11 +47,12 @@ fileRouter.route('/')
 	.get(function(req, res, next) {
 	  var currentDir = getCurrentDir();
 	 	var query = req.query.path || '';
-	 	if (query) currentDir = path.join(currentDir, query);
+	 	if (query)
+        currentDir = '/'+ query;
 	 	console.log("browsing ", currentDir);
 	 	fs.readdir(currentDir, function (err, files) {
 		    if (err) {
-		    	console.log("Inside error block");
+		    	console.log("Inside error block", err);
 				//res.download(currentDir);
 		    }
 		    else{
@@ -122,7 +123,7 @@ fileRouter.route('/')
 		var currentDir = getCurrentDir();
 		var query = req.query.path || '';
 
-	 	if (query) currentDir = path.join(currentDir, query);
+	 	if (query) currentDir = '/'+ query;
 
 	 	console.log("query", query);
     deleteFile(currentDir);
@@ -138,7 +139,7 @@ fileRouter.route('/download')
 		var currentDir = getCurrentDir();
 		var query = req.query.path || '';
 
-	 	if (query) currentDir = path.join(currentDir, query);
+	 	if (query) currentDir = '/'+ query;
     var ext = currentDir.substring(currentDir.length-4, currentDir.length);
     //console.log("EXT", ext);
     if(ext === '.zip'){
@@ -159,7 +160,8 @@ fileRouter.route('/zip')
     var currentDir = getCurrentDir();
     var query = req.query.path || '';
 
-    if (query) currentDir = path.join(currentDir, query);
+    if (query) currentDir = '/'+ query;
+
     var file = currentDir+'.zip';
     zipFolder(currentDir, file, function(err) {
       if(err) {

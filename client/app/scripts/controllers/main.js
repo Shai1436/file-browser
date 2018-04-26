@@ -11,10 +11,11 @@ angular.module('clientApp')
   .constant('baseURL','http://localhost:3000/')
   .controller('MainController', ['$scope', '$routeParams', 'MainFactory', '$mdToast', '$window',
    function($scope, $routeParams, mainFactory, $mdToast, $window) {
+
     $scope.files = mainFactory.getFiles($routeParams.path).query(
         function(response) {
             $scope.files = response;
-            //console.log('data', response);
+            //$scope.basePath = $routeParams.path;
         },
         function(response) {
             $scope.message = 'Error: '+response.status + ' '  + response.statusText;
@@ -80,23 +81,29 @@ angular.module('clientApp')
       var newPath = '';
       if(lastSlashIndex !== -1){
         newPath =  $routeParams.path.substr(0, lastSlashIndex);
+        //var currentPath = $routeParams.path.substr(lastSlashIndex+1, $routeParams.path.length);
+        //if(currentPath !== "home")
+        $window.location.href =  '#/' + newPath;
       }
-      $window.location.href =  '#/' + newPath;
+
+      //$scope.basePath = newPath;
     };
 
     $scope.sendPath = function(){
     	//console.log($scope.basePath);
-    	mainFactory.setPath($scope.basePath);
-      //$window.location.href = '#' + $scope.basePath;
-      $scope.files = mainFactory.getFiles().query(
-          function(response) {
-              $scope.files = response;
-              //console.log('data', response);
-          },
-          function(response) {
-              $scope.message = 'Error: '+response.status + ' '  + response.statusText;
-          }
-      );
+    	if($scope.basePath){
+        $window.location.href = '#' + $scope.basePath;
+        $scope.files = mainFactory.getFiles($scope.basePath).query(
+            function(response) {
+                $scope.files = response;
+                //console.log('data', response);
+            },
+            function(response) {
+                $scope.message = 'Error: '+response.status + ' '  + response.statusText;
+            }
+        );
+      }
+
     };
 
   }])

@@ -12,8 +12,9 @@ router.get('/', function(req, res, next) {
      var currentDir = getCurrentDir();
 
      var query = req.query.path || '';
-     if (query) currentDir = path.join(currentDir, query);
-
+     if (query)
+        currentDir = '/' + query;
+    console.log("serving dir", currentDir);
      var fileLoc = path.resolve(currentDir);
      //fileLoc = path.join(fileLoc, req.url);
 
