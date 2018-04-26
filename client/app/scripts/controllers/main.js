@@ -11,11 +11,11 @@ angular.module('clientApp')
   .constant('baseURL','http://localhost:3000/')
   .controller('MainController', ['$scope', '$routeParams', 'MainFactory', '$mdToast', '$window',
    function($scope, $routeParams, mainFactory, $mdToast, $window) {
-
+     $scope.basePath = $routeParams.path;
     $scope.files = mainFactory.getFiles($routeParams.path).query(
         function(response) {
             $scope.files = response;
-            //$scope.basePath = $routeParams.path;
+
         },
         function(response) {
             $scope.message = 'Error: '+response.status + ' '  + response.statusText;
@@ -84,6 +84,7 @@ angular.module('clientApp')
         //var currentPath = $routeParams.path.substr(lastSlashIndex+1, $routeParams.path.length);
         //if(currentPath !== "home")
         $window.location.href =  '#/' + newPath;
+        $scope.basePath = $routeParams.path;
       }
 
       //$scope.basePath = newPath;
