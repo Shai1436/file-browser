@@ -1,25 +1,21 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
 
-
-</div>
 <div class="container">
-  <form name="pathForm" ng-submit="sendPath()" class="form-inline my-2 my-lg-0"  role="form">
+  <form name="pathForm" ng-submit="sendPath()" role="form">
 
-
-    <input type="text" class="form-control mr-sm-2" id="path" name="path" placeholder="Enter file path to browse" value="" ng-model="basePath">
-
-    <button id="submit" name="submit" type="submit" class="btn btn-primary my-2 my-sm-0"> Browse </button>
-
+    <div class="row">
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="path" name="path" placeholder="Enter file path to browse" value="" ng-model="basePath">
+      </div>
+      <div class="col-md-4">
+        <button id="submit" name="submit" type="submit" class="btn btn-primary"> Browse </button>
+      </div>
+    </div>
   </form>
+
 </div>
+<hr>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div><a  ng-click="goBack()"><span class="icon-arrow-left2"></span></a> </div>
     <ul class="media-list" tab-pane fade in active>
       <li class="media" ng-repeat="file in files ">
@@ -41,11 +37,7 @@
               <div class="col-md-4"> <h6>{{file.Mtime}}</h6> </div>
               <div class="col-md-4"> <h6>{{file.Size}}</h6> </div>
               <div class="col-md-4">
-                <div class="progress hidden">
-                  <div class="progress-bar progress-bar-success progress-bar-striped active" name="{{format(file.Name)}}" role="progressbar"  aria-valuemin="0" aria-valuemax="100" >
 
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -59,22 +51,4 @@
     </ul>
 
   </div>
-  <div class="col-md-4">
-    ADS
-  </div>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
 </div>
