@@ -11,7 +11,28 @@ angular.module('clientApp')
   	 		files =  $resource(baseURL + '?path='+path);
     	else
     		files =  $resource(baseURL + '/');
-      	return files;
+
+      return files;
+    };
+
+    this.setPath = function(path){
+      var data = path;
+      var config = {
+          headers : {
+              'Content-Type': 'application/x-www-form-urlencoded'
+          }
+      };
+      console.log(path);
+      $http.post(baseURL, data, config)
+      .then(
+         function(response){
+           console.log(response);
+
+         },
+         function(error){
+           console.log(response);
+         }
+      );
     };
 
     this.downloadFiles = function(path, IsDirectory){

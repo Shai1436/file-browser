@@ -106,6 +106,16 @@ fileRouter.route('/')
 	    });
 
 	})
+
+  .post(function(req, res, next) {
+
+	  var path = Object.keys(req.body)[0];
+    console.log("setting path", Object.keys(req.body)[0]);
+    require('../config').setPath(path);
+    res.end();
+
+	})
+
 	.delete(function(req, res, next) {
 
 

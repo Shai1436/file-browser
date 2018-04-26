@@ -84,5 +84,20 @@ angular.module('clientApp')
       $window.location.href =  '#/' + newPath;
     };
 
+    $scope.sendPath = function(){
+    	//console.log($scope.basePath);
+    	mainFactory.setPath($scope.basePath);
+      //$window.location.href = '#' + $scope.basePath;
+      $scope.files = mainFactory.getFiles().query(
+          function(response) {
+              $scope.files = response;
+              //console.log('data', response);
+          },
+          function(response) {
+              $scope.message = 'Error: '+response.status + ' '  + response.statusText;
+          }
+      );
+    };
+
   }])
   ;

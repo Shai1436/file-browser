@@ -5,8 +5,19 @@
     Always a pleasure scaffolding your apps.
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
 
+
+</div>
+<div class="container">
+  <form name="pathForm" ng-submit="sendPath()" class="form-inline my-2 my-lg-0"  role="form">
+
+
+    <input type="text" class="form-control mr-sm-2" id="path" name="path" placeholder="Enter file path to browse" value="" ng-model="basePath">
+
+    <button id="submit" name="submit" type="submit" class="btn btn-primary my-2 my-sm-0"> Browse </button>
+
+  </form>
+</div>
 <div class="row">
   <div class="col-md-8">
     <div><a  ng-click="goBack()"><span class="icon-arrow-left2"></span></a> </div>
