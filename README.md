@@ -1,5 +1,6 @@
 # file-browser
-It is a MEAN file browser.weas
+It is a MEAN file browser.
+
 How to use?
   1. Clone the repository.
   2. cd client
