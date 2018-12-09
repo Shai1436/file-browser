@@ -32,22 +32,6 @@ angular
         controllerAs: 'main',
 
       })
-      // .when('/files', {
-      //   templateUrl: 'views/main.html',
-      //   controller: 'MainController',
-      //   controllerAs: 'main'
-      // })
-      // .when('/files/:path*', {
-      //   templateUrl: 'views/main.html',
-      //   controller: 'PathController',
-      //   controllerAs: 'path',
-      //
-      // })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
       .otherwise({
         redirectTo: '/home'
       });
