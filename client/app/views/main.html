@@ -21,7 +21,9 @@
   <div class="col-md-12">
     <div><a  ng-click="goBack()"><span class="icon-arrow-left2"></span></a> </div>
     <div>
-      
+      <div ng-if="!files.length">
+        <h2>Nothing to see here</h2>
+      </div>
       <ul class="media-list" tab-pane fade in active>
         <li class="media" ng-repeat="file in files ">
           <div class="row" >
