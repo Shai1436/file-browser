@@ -66,31 +66,22 @@ fileRouter.route('/')
 		    .forEach(function (file) {
 		        try {
 
-		            //console.log("file", file);
-	                var isDirectory = fs.statSync(path.join(currentDir,file)).isDirectory();
-	 				var mtime = 0;
-	 				mtime = fs.statSync(path.join(currentDir,file)).mtime ;
+							//console.log("file", file);
+							var isDirectory = fs.statSync(path.join(currentDir,file)).isDirectory();
+							var mtime = 0;
+							mtime = fs.statSync(path.join(currentDir,file)).mtime ;
 
-	 				mtime = new Date(mtime);
-	 				mtime = dateFormat(mtime);
+							mtime = new Date(mtime);
+							mtime = dateFormat(mtime);
+							if (isDirectory) {
 
-	 				var size = fsUtils.fsizeSync(path.join(currentDir,file),  {
-        				skipErrors  : true,
-        				logErrors   : true
-    				}, function (err, size) {
-       					if(err)
-       						console.log(err);
-    				});
-	 				size = calcSize(size);
-	                if (isDirectory) {
-
-	                  //console.log("size", size);
-	                  data.push({ Name : file, Ext : 0, IsDirectory: true, Path : path.join(query, file), Size: size, Mtime : mtime});
-	                } else {
-	                  var ext = path.extname(file);
-	                  var size =  calcSize(fs.statSync(path.join(currentDir,file)).size);
-	                  data.push({ Name : file, Ext : ext, IsDirectory: false, Path : path.join(query, file), Size:size, Mtime : mtime});
-	                }
+								//console.log("size", size);
+								data.push({ Name : file, Ext : 0, IsDirectory: true, Path : path.join(query, file), Size: 0, Mtime : mtime});
+							} else {
+								var ext = path.extname(file);
+								var size =  calcSize(fs.statSync(path.join(currentDir,file)).size);
+								data.push({ Name : file, Ext : ext, IsDirectory: false, Path : path.join(query, file), Size:size, Mtime : mtime});
+							}
 
 		        } catch(e) {
 		          console.log("error", e);
