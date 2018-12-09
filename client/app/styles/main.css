@@ -100,6 +100,7 @@
 
 body {
   padding: 0;
+  height: 100%;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -114,13 +115,13 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
+  min-height: 60px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
 }
 
 /* Custom page footer */
