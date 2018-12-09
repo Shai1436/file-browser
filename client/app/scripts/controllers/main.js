@@ -10,15 +10,17 @@
 angular.module('clientApp')
   .constant('baseURL','http://localhost:3000/')
   .controller('MainController', ['$scope', '$routeParams', 'MainFactory', '$mdToast', '$window',
-   function($scope, $routeParams, mainFactory, $mdToast, $window) {
-     $scope.basePath = $routeParams.path;
+  function($scope, $routeParams, mainFactory, $mdToast, $window) {
+    $scope.basePath = $routeParams.path;
+    mainFactory.toggleLoading();
     $scope.files = mainFactory.getFiles($routeParams.path).query(
         function(response) {
-            $scope.files = response;
-
+          $scope.files = response;
+          mainFactory.toggleLoading();
         },
         function(response) {
-            $scope.message = 'Error: '+response.status + ' '  + response.statusText;
+          $scope.message = 'Error: '+response.status + ' '  + response.statusText;
+          mainFactory.toggleLoading();
         }
     );
 
@@ -96,11 +98,13 @@ angular.module('clientApp')
         $window.location.href = '#' + $scope.basePath;
         $scope.files = mainFactory.getFiles($scope.basePath).query(
             function(response) {
-                $scope.files = response;
+              $scope.files = response;
+              mainFactory.toggleLoading();
                 //console.log('data', response);
             },
             function(response) {
-                $scope.message = 'Error: '+response.status + ' '  + response.statusText;
+              $scope.message = 'Error: '+response.status + ' '  + response.statusText;
+              mainFactory.toggleLoading();
             }
         );
       }

@@ -14,38 +14,46 @@
 <div class="row">
   <div class="col-md-12">
     <div><a  ng-click="goBack()"><span class="icon-arrow-left2"></span></a> </div>
-    <ul class="media-list" tab-pane fade in active>
-      <li class="media" ng-repeat="file in files ">
-        <div class="row" >
-
-          <div class="col-md-1"><a  ng-href="#/{{file.Path}}" > <span ng-class="getFileIcon(file.Ext)"> </span> </a><br></div>
-          <div class="col-md-11">
-            <div class="row">
-
-              <div ng-if="file.IsDirectory" class="col-md-10"> <a  ng-href="#/{{file.Path}}" > <h4>{{file.Name}}</h4> </a></div>
-
-              <div ng-if="!file.IsDirectory"  class="col-md-10"> <a  ng-click="showFile(file.Path)" > <h4>{{file.Name}}</h4> </a></div>
-
-              <div class="col-md-1"><span  class="icon-cloud-download" ng-click="download(file.Path, file.IsDirectory)" > </span> </div>
-              <div class="col-md-1"><span  class="icon-bin" ng-click="delete(file.Path)" > </span> </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4"> <h6>{{file.Mtime}}</h6> </div>
-              <div class="col-md-4"> <h6>{{file.Size}}</h6> </div>
-              <div class="col-md-4">
-
-              </div>
-            </div>
-
-            <hr>
+    <div>
+      <div class="container">
+        <div class="row">
+          <div id="custom-loader" class="col-2 col-lg-offset-6">
           </div>
-
         </div>
+      </div>
+      <ul class="media-list" tab-pane fade in active>
+        <li class="media" ng-repeat="file in files ">
+          <div class="row" >
+            
+            <div class="col-md-1"><a  ng-href="#/{{file.Path}}" > <span ng-class="getFileIcon(file.Ext)"> </span> </a><br></div>
+            <div class="col-md-11">
+              <div class="row">
 
+                <div ng-if="file.IsDirectory" class="col-md-10"> <a  ng-href="#/{{file.Path}}" > <h4>{{file.Name}}</h4> </a></div>
 
-      </li>
-    </ul>
+                <div ng-if="!file.IsDirectory"  class="col-md-10"> <a  ng-click="showFile(file.Path)" > <h4>{{file.Name}}</h4> </a></div>
 
+                <div class="col-md-1"><span  class="icon-cloud-download" ng-click="download(file.Path, file.IsDirectory)" > </span> </div>
+                <div class="col-md-1"><span  class="icon-bin" ng-click="delete(file.Path)" > </span> </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4"> <h6>{{file.Mtime}}</h6> </div>
+                <div ng-if="!file.IsDirectory" class="col-md-4"> <h6>{{file.Size}}</h6> </div>
+                <div ng-if="file.IsDirectory" class="col-md-4">
+                  <h6>--</h6>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+              </div>
+
+              <hr>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

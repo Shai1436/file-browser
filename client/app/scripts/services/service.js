@@ -90,5 +90,10 @@ angular.module('clientApp')
     	}
     };
 
+    this.toggleLoading = function(){
+      var el = document.getElementById("custom-loader");
+      el.classList.toggle("loader");
+    };
+
 }])
 ;
