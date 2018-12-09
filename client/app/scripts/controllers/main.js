@@ -11,16 +11,17 @@ angular.module('clientApp')
   .constant('baseURL','http://localhost:3000/')
   .controller('MainController', ['$scope', '$routeParams', 'MainFactory', '$mdToast', '$window',
   function($scope, $routeParams, mainFactory, $mdToast, $window) {
+    
     $scope.basePath = $routeParams.path;
     mainFactory.toggleLoading();
     $scope.files = mainFactory.getFiles($routeParams.path).query(
         function(response) {
           $scope.files = response;
-          mainFactory.toggleLoading();
+          checkLoadingToggle();
         },
         function(response) {
           $scope.message = 'Error: '+response.status + ' '  + response.statusText;
-          mainFactory.toggleLoading();
+          checkLoadingToggle();
         }
     );
 
@@ -99,17 +100,23 @@ angular.module('clientApp')
         $scope.files = mainFactory.getFiles($scope.basePath).query(
             function(response) {
               $scope.files = response;
-              mainFactory.toggleLoading();
+              checkLoadingToggle();
                 //console.log('data', response);
             },
             function(response) {
               $scope.message = 'Error: '+response.status + ' '  + response.statusText;
-              mainFactory.toggleLoading();
+              checkLoadingToggle();
             }
         );
       }
 
     };
+
+    var checkLoadingToggle = function(){
+      if (document.getElementById("custom-loader").classList.contains("loader")) {
+        mainFactory.toggleLoading();
+      }
+    }
 
   }])
   ;
